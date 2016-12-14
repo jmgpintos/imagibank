@@ -1,6 +1,7 @@
 <?php
 
-define('DEBUG', false);
+define('DEBUG', false); //para ver en el navegador los mensajes de debug
+define('LOG', true);//para enviar a /var/log/apache2/error.log los mensajes de debug
 define('DS', DIRECTORY_SEPARATOR);
 
 //Ruta raíz de la aplicación ('/var/www/html/imagibank/')
@@ -25,9 +26,11 @@ put($_GET['url'], 'url');
 
 $r = new Request();
 
+/*
 put($r->getControlador(), 'controlador');
 put($r->getMetodo(), 'metodo');
 vardump($r->getArgs());
+*/
 
 try {
     Bootstrap::run(new Request());

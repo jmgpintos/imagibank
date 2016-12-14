@@ -23,6 +23,7 @@ if (!function_exists('put')) {
             }
             echo "$msg</pre>\n";
         }
+        printLogLine($msg, $label);
     }
 
 }
@@ -54,7 +55,7 @@ if (!function_exists('puty')) {
  */
 if (!function_exists('vardump')) {
 
-    function vardump($msg = null, $label ='', $alwaysShow = false)
+    function vardump($msg = null, $label = '', $alwaysShow = false)
     {
         if (DEBUG || $alwaysShow) {
             $args = func_get_args();
@@ -124,4 +125,22 @@ if (!function_exists('printFunctionName')) {
     }
 
 }
+
+if (!function_exists('printLogLine')) {
+
+    function printLogLine($msg = 'xxx', $label = '')
+    {
+        if (LOG) {
+            if (strlen($label) > 0) {
+                $msg = $label . ': ' . $msg;
+            }
+
+            $logLine = "[" . date("D M j G:i:s T Y") . "]";
+            $logLine .=': ' . APP_NAME . " - " . $msg . "\n";
+            file_put_contents('php://stderr', print_r($logLine, TRUE));
+        }
+    }
+
+}
+
 printFileName(__FILE__);

@@ -1,0 +1,12 @@
+#Nos aseguramos de que el módulo Rewrite está activado
+RewriteEngine On
+
+#Si no es directorio
+RewriteCond %{REQUEST_FILENAME} !-d 
+ #Si no es fichero
+RewriteCond %{REQUEST_FILENAME} !-f
+ #Si no es link
+RewriteCond %{REQUEST_FILENAME} !-l
+
+#Enviamos la url como un parámetro a index.php
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L] 

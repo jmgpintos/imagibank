@@ -143,4 +143,18 @@ if (!function_exists('printLogLine')) {
 
 }
 
+if (!function_exists('loadFile')) {
+
+    function loadFile($filename, $error='')
+    {
+        if(is_readable($filename)) {
+        require_once $filename;
+        }
+        else{
+            throw new Exception($error . ' - ' . $filename);
+        }
+    }
+
+}
+
 printFileName(__FILE__);

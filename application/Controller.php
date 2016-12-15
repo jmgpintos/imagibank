@@ -18,15 +18,24 @@ abstract class Controller
     {
         $modelo = $modelo . 'Model';
         $rutaModelo = ROOT . 'models' . DS . $modelo . '.php';
-        
-        if(is_readable($rutaModelo)) {
+
+        if (is_readable($rutaModelo)) {
             require_once $rutaModelo;
             $modelo = new $modelo;
             return $modelo;
         }
-        else{
+        else {
             throw new Exception('Error de modelo');
         }
+    }
+
+    protected function getLibrary($libreria)
+    {
+        printFunctionName(__FUNCTION__, __FILE__);
+
+        $rutaLibreria = ROOT . 'libs' . DS . $libreria . '.php';
+
+        loadFile($rutaLibreria, 'Error al cargar la librería ' . $libreria);
     }
 
 }

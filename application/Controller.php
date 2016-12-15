@@ -13,4 +13,20 @@ abstract class Controller
     }
 
     abstract public function index(); //Todas las clases hijas deben implementar un método index
+
+    protected function loadModel($modelo)
+    {
+        $modelo = $modelo . 'Model';
+        $rutaModelo = ROOT . 'models' . DS . $modelo . '.php';
+        
+        if(is_readable($rutaModelo)) {
+            require_once $rutaModelo;
+            $modelo = new $modelo;
+            return $modelo;
+        }
+        else{
+            throw new Exception('Error de modelo');
+        }
+    }
+
 }

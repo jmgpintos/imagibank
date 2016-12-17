@@ -9,35 +9,44 @@ class View
 {
 
     private $_controlador;
+    private $_js;
 
     public function __construct(Request $peticion)
     {
         printFunctionName(__METHOD__, __FILE__);
         $this->_controlador = $peticion->getControlador();
+        $this->_js = array();
     }
 
     public function renderizar($vista, $item = false)
     {
         printFunctionName(__METHOD__, __FILE__);
-        
+
         $menu = array(
-          array(
-              'id' => 'inicio',
-              'titulo' => 'Inicio',
-              'enlace' => BASE_URL
-          ),
-          array(
-              'id' => 'usuario',
-              'titulo' => 'usuario',
-              'enlace' => BASE_URL. 'usuario'
-          )  
+            array(
+                'id' => 'inicio',
+                'titulo' => 'Inicio',
+                'enlace' => BASE_URL
+            ),
+            array(
+                'id' => 'usuario',
+                'titulo' => 'usuario',
+                'enlace' => BASE_URL . 'usuario'
+            )
         );
+
+        $js = array();
+
+        if (count($this->_js)) {
+            $js = $this->_js;
+        }
 
         $_layoutParams = array(
             'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
             'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
             'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
-            'menu' => $menu
+            'menu' => $menu,
+            'js' => $js
         );
 
         $rutaView = ROOT . 'views' . DS . $this->_controlador . DS . $vista . '.phtml';
@@ -49,6 +58,18 @@ class View
         }
         else {
             throw new Exception("No existe la vista: " . $rutaView);
+        }
+    }
+
+    public function setJs(array $js)
+    {
+        if(is_array($js) && count($js)) {
+            for ($i = 0; $i < count($js); $i++) {
+                $this->_js[$i] = BASE_URL . 'views/' . $this->_controlador . '/js/' . $js[$i] . '.js';
+            }
+        }
+        else {
+            throw new Exception('Error de js');
         }
     }
 

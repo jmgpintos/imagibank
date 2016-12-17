@@ -26,6 +26,7 @@ class usuarioController extends Controller
     public function nuevo()
     {
         $this->_view->titulo = 'Nuevo usuario';
+        $this->_view->setJs(array('nuevo'));
 
         if ($this->getInt('guardar') == 1) {
             $this->_view->datos = $_POST;

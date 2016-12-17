@@ -1,20 +1,26 @@
+
+
 <form id="form1" method="POST" action="<?php echo BASE_URL; ?>usuario/nuevo">
     <input type="hidden" name="guardar" value="1" />
 
     <p>Nombre: <br/>
         <input type="text" 
                name="username" 
-               value="<?php if(isset($this->datos['username'])){ echo $this->datos['username'];}?>"
+               value="<?php if (isset($this->datos['username'])) {
+    echo $this->datos['username'];
+} ?>"
                />
     </p>
-    
+
     <p>Password: <br/>
         <input type="password" 
                name="password"  
-               value="<?php if(isset($this->datos['password'])){ echo $this->datos['password'];}?>"
-                />
+               value="<?php if (isset($this->datos['password'])) {
+    echo $this->datos['password'];
+} ?>"
+               />
     </p>
-    
+
     <input type="submit" value="Guardar" />
 
 </form>

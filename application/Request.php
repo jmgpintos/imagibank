@@ -11,17 +11,16 @@ class Request
 
     public function __construct()
     {
-        printFunctionName(__METHOD__,__FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         if (isset($_GET['url'])) {
             $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
             $url = explode('/', $url);
             $url = array_filter($url);
+            
+            $this->_controlador = strtolower(array_shift($url));
+            $this->_metodo = strtolower(array_shift($url));
+            $this->_argumentos = $url;
         }
-
-        $this->_controlador = strtolower(array_shift($url));
-        $this->_metodo = strtolower(array_shift($url));
-        $this->_argumentos = $url;
-
         if (!$this->_controlador) {
             $this->_controlador = DEFAULT_CONTROLLER;
         }
@@ -37,22 +36,20 @@ class Request
 
     public function getControlador()
     {
-        printFunctionName(__METHOD__,__FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         return $this->_controlador;
     }
-    
+
     public function getMetodo()
     {
-        printFunctionName(__METHOD__,__FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         return $this->_metodo;
     }
 
     public function getArgs()
     {
-        printFunctionName(__METHOD__,__FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         return $this->_argumentos;
     }
-
-
 
 }

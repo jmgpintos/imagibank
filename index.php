@@ -23,6 +23,7 @@ require_once APP_PATH . 'Registro.php';
 require_once APP_PATH . 'Database.php';
 
 //vardump(get_required_files());
+if(isset($_GET['url']))
 put($_GET['url'], 'url');
 
 $r = new Request();

@@ -27,9 +27,9 @@ class View
               'enlace' => BASE_URL
           ),
           array(
-              'id' => 'hola',
-              'titulo' => 'Hola',
-              'enlace' => BASE_URL. 'hola'
+              'id' => 'usuario',
+              'titulo' => 'usuario',
+              'enlace' => BASE_URL. 'usuario'
           )  
         );
 

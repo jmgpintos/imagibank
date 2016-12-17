@@ -1,0 +1,22 @@
+<h2>Usuarios</h2>
+
+<?php if(isset($this->usuarios) && count($this->usuarios)):?>
+<table>
+    <?php for($i=0;$i<count($this->usuarios);$i++):?>
+    <tr>
+        <td><?php echo $this->usuarios[$i]['id'];?></td>
+        <td><?php echo $this->usuarios[$i]['username'];?></td>
+        <td><?php echo $this->usuarios[$i]['password'];?></td>
+    </tr>
+    <?php endfor;?>
+</table>
+<h3>Total usuarios: <?php echo count($this->usuarios);?></h3>
+<?php else: ?>
+<p><strong>No hay usuarios</strong></p>
+<?php endif; ?>
+
+<p><a href="<?php BASE_URL;?>usuario/nuevo">Agregar usuario</a></p>
+<hr/>
+<pre>
+<?php print_r($this->usuarios);?>
+</pre>

@@ -40,7 +40,7 @@ if (!function_exists('puty')) {
 
     function puty($msg, $label = '')
     {
-        put($msg, $label);
+        put($msg, $label, TRUE);
         exit;
     }
 
@@ -130,13 +130,19 @@ if (!function_exists('printLogLine')) {
 
     function printLogLine($msg = 'xxx', $label = '')
     {
+        if (defined('APP_NAME')) {
+            $appName = APP_NAME;
+        }
+        else {
+            $appName = '';
+        }
         if (LOG) {
             if (strlen($label) > 0) {
                 $msg = $label . ': ' . $msg;
             }
 
             $logLine = "[" . date("D M j G:i:s T Y") . "]";
-            $logLine .=': ' . APP_NAME . " - " . $msg . "\n";
+            $logLine .=': ' . $appName . " - " . $msg . "\n";
             file_put_contents('php://stderr', print_r($logLine, TRUE));
         }
     }
@@ -145,12 +151,12 @@ if (!function_exists('printLogLine')) {
 
 if (!function_exists('loadFile')) {
 
-    function loadFile($filename, $error='')
+    function loadFile($filename, $error = '')
     {
-        if(is_readable($filename)) {
-        require_once $filename;
+        if (is_readable($filename)) {
+            require_once $filename;
         }
-        else{
+        else {
             throw new Exception($error . ' - ' . $filename);
         }
     }

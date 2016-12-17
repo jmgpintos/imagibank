@@ -1,0 +1,72 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-dic-2016, 14:44:45
+    Author     : José Manuel García Pintos<jmgpintos at gmail.com>
+*/
+/*MARGIN*/
+.margin-xs{margin:5px;}
+.margin-sm{margin:10px;}
+.margin-md{margin:15px;}
+.margin-lg{margin:20px;}
+.margin-left-xs{margin-left:5px;}
+.margin-left-sm{margin-left:10px;}
+.margin-left-md{margin-left:15px;}
+.margin-left-lg{margin-left:20px;}
+.margin-top-xs{margin-top:5px;}
+.margin-top-sm{margin-top:10px;}
+.margin-top-md{margin-top:15px;}
+.margin-top-lg{margin-top:20px;}
+.margin-right-xs{margin-right:5px;}
+.margin-right-sm{margin-right:10px;}
+.margin-right-md{margin-right:15px;}
+.margin-right-lg{margin-right:20px;}
+.margin-bottom-xs{margin-bottom:5px;}
+.margin-bottom-sm{margin-bottom:10px;}
+.margin-bottom-md{margin-bottom:15px;}
+.margin-bottom-lg{margin-bottom:20px;}
+
+/*PADDING*/
+.padding-xs{padding:5px;}
+.padding-sm{padding:10px;}
+.padding-md{padding:15px;}
+.padding-lg{padding:20px;}
+.padding-left-xs{padding-left:5px;}
+.padding-left-sm{padding-left:10px;}
+.padding-left-md{padding-left:15px;}
+.padding-left-lg{padding-left:20px;}
+.padding-top-xs{padding-top:5px;}
+.padding-top-sm{padding-top:10px;}
+.padding-top-md{padding-top:15px;}
+.padding-top-lg{padding-top:20px;}
+.padding-right-xs{padding-right:5px;}
+.padding-right-sm{padding-right:10px;}
+.padding-right-md{padding-right:15px;}
+.padding-right-lg{padding-right:20px;}
+.padding-bottom-xs{padding-bottom:5px;}
+.padding-bottom-sm{padding-bottom:10px;}
+.padding-bottom-md{padding-bottom:15px;}
+.padding-bottom-lg{padding-bottom:20px;}
+
+/*COLORES*/
+/*texto*/
+.principal{color: #337ab7;}
+.error{color: #a94442;}
+.aviso{color: #8a6d3b;}
+.info{color: #31708f;}
+.exito{color: #3c763d;}
+/*fondo*/
+.bg-principal{background-color: #337ab7;border-color: #2e6da4; }
+.bg-error{background-color: #d9534f;border-color: #d43f3a; }
+.bg-aviso{background-color: #f0ad4e;border-color: #eea236;}
+.bg-info{background-color: #5bc0de;border-color: #46b8da;}
+.bg-exito{background-color: #5cb85c;border-color: #4cae4c;}
+
+
+/*VISIBILIDAD*/
+.show {display: block !important;}
+.hidden {display: none !important;}
+.invisible {visibility: hidden;}

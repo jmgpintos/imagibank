@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>normalize.css">
         <link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>estilos.css">
         <title><?php echo $this->titulo; ?></title>
     </head>

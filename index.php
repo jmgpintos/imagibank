@@ -12,6 +12,7 @@ define('APP_PATH', ROOT . 'application' . DS);
 define('LIB_PATH', ROOT . 'libs' . DS);
 
 require_once LIB_PATH . 'helpers/helper.php';
+require_once LIB_PATH . 'helpers/usuario-helper.php';
 
 require_once APP_PATH . 'Config.php';
 require_once APP_PATH . 'Request.php';

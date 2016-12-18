@@ -25,6 +25,8 @@ class usuarioController extends Controller
 
     public function nuevo()
     {
+        printFunctionName(__METHOD__, __FILE__);
+
         $this->_view->titulo = 'Nuevo usuario';
         $this->_view->setJs(array('nuevo'));
 
@@ -44,7 +46,7 @@ class usuarioController extends Controller
             }
 
             $this->_usuario->insertarUsuario(
-                    $this->getTexto('username'), $this->getTexto('password')
+                    $this->getPostParam('username'), $this->getPostParam('password')
             );
             $this->redireccionar('usuario');
         }
@@ -52,4 +54,70 @@ class usuarioController extends Controller
         $this->_view->renderizar('nuevo', 'usuario');
     }
 
+    public function editar($id)
+    {
+        printFunctionName(__METHOD__, __FILE__);
+
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('usuario');
+        }
+
+        if (!$this->_usuario->getUsuario($this->filtrarInt($id))) {
+            $this->redireccionar('usuario');
+        }
+
+        $this->_view->titulo = 'Editar usuario';
+        $this->_view->setJs(array('nuevo'));
+
+        if ($this->getInt('guardar') == 1) {
+            $this->_view->datos = $_POST;
+
+            if (!$this->getTexto('username')) {
+                $this->_view->_error = 'Debe introducir el nombre de usuario';
+                $this->_view->renderizar('editar', 'usuario');
+                exit;
+            }
+
+            if (!$this->getTexto('password')) {
+                $this->_view->_error = 'Debe introducir el password del usuario';
+                $this->_view->renderizar('editar', 'usuario');
+                exit;
+            }
+
+            $this->_usuario->editarUsuario(
+                    $this->filtrarInt($id), $this->getTexto('username'), $this->getTexto('password')
+            );
+            $this->redireccionar('usuario');
+        }
+
+        $this->_view->datos = $this->_usuario->getUsuario($this->filtrarInt($id));
+        $this->_view->renderizar('editar', 'usuario');
+    }
+
+    public function eliminar($id)
+    {
+        printFunctionName(__METHOD__, __FILE__);
+
+        if (!$this->filtrarInt($id)) {
+            $this->redireccionar('usuario');
+        }
+
+        if (!$this->_usuario->getUsuario($this->filtrarInt($id))) {
+            $this->redireccionar('usuario');
+        }
+
+        $this->_usuario->eliminarUsuario($this->filtrarInt($id));
+
+        $this->redireccionar('usuario');
+    }
+
+    //METODOS PARA DEV
+    public function crear()
+    {
+        printFunctionName(__METHOD__, __FILE__);
+        
+        $this->_usuario->nuevoUsuarioAuto();
+        
+        $this->redireccionar('usuario');
+    }
 }

@@ -45,6 +45,7 @@ abstract class Controller
      */
     protected function getTexto($clave)
     {
+        printFunctionName(__FUNCTION__, __FILE__);
 
         if (isset($_POST[$clave]) && !empty($_POST[$clave])) {
             $_POST[$clave] = htmlspecialchars($_POST[$clave], ENT_QUOTES);
@@ -61,12 +62,47 @@ abstract class Controller
      */
     protected function getInt($clave)
     {
+        printFunctionName(__FUNCTION__, __FILE__);
+
         if (isset($_POST[$clave]) && !empty($_POST[$clave])) {
             $_POST[$clave] = filter_input(INPUT_POST, $clave, FILTER_VALIDATE_INT);
             return $_POST[$clave];
         }
 
         return 0;
+    }
+    
+    /**
+     * Devuelve el valor de la clave $_POST sin filtrar, para ser utilizada en un db->prepare()
+     * @param String $clave
+     * @return type
+     */
+    protected function getPostParam($clave)
+    {
+        
+        if (isset($_POST[$clave])) {
+            return $_POST[$clave];
+        }
+    }
+
+    //FUNCIONES PARA FILTRAR ARGUMENTOS EN URL
+    /**
+     * Los argumentos viene como cadenas. Esta función lo convierte en int
+     * @param String $int
+     * @return int
+     */
+    protected function filtrarInt($int)
+    {
+        printFunctionName(__FUNCTION__, __FILE__);
+
+        $int = (int) $int;
+
+        if (is_integer($int)) {
+            return $int;
+        }
+        else {
+            return 0;
+        }
     }
 
     /**
@@ -75,6 +111,8 @@ abstract class Controller
      */
     protected function redireccionar($ruta = false)
     {
+        printFunctionName(__FUNCTION__, __FILE__);
+
         if ($ruta) {
             header('location:' . BASE_URL . $ruta);
         }

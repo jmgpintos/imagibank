@@ -70,3 +70,47 @@ and open the template in the editor.
 .show {display: block !important;}
 .hidden {display: none !important;}
 .invisible {visibility: hidden;}
+
+
+
+
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.btn-principal{background-color: #337ab7;border-color: #2e6da4; }
+.btn-error{background-color: #d9534f;border-color: #d43f3a; }
+.btn-aviso{background-color: #f0ad4e;border-color: #eea236;}
+.btn-info{background-color: #5bc0de;border-color: #46b8da;}
+.btn-exito{background-color: #5cb85c;border-color: #4cae4c;}
+
+.btn-principal:hover, .btn-principal:active, .btn-principal:focus{background-color: #286090;border-color: #204d74;}
+.btn-error:hover, .btn-error:active, .btn-error:focus{background-color: #c9302c;border-color: #ac2925;}
+.btn-aviso:hover, .btn-aviso:active, .btn-aviso:focus{background-color: #ec971f;border-color: #d58512;}
+.btn-info:hover, .btn-info:active, .btn-info:focus{background-color: #31b0d5;border-color: #269abc;}
+.btn-exito:hover, .btn-exito:active, .btn-exito:focus{background-color: #449d44;border-color: #398439;}
+
+a.btn{text-decoration: none;}
+
+.btn-lg {padding: 10px 16px;font-size: 18px;line-height: 1.3333333;border-radius: 6px;}
+.btn-sm {padding: 5px 10px;font-size: 12px;line-height: 1.5;border-radius: 3px;}
+.btn-xs {padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;}

@@ -7,6 +7,8 @@
         <td><?php echo $this->usuarios[$i]['id'];?></td>
         <td><?php echo $this->usuarios[$i]['username'];?></td>
         <td><?php echo $this->usuarios[$i]['password'];?></td>
+        <td><a href="<?php echo BASE_URL . 'usuario/editar/' . $this->usuarios[$i]['id'];?>">Editar</a></td>
+        <td><a href="<?php echo BASE_URL . 'usuario/eliminar/' . $this->usuarios[$i]['id'];?>">Eliminar</a></td>
     </tr>
     <?php endfor;?>
 </table>
@@ -14,8 +16,10 @@
 <?php else: ?>
 <p><strong>No hay usuarios</strong></p>
 <?php endif; ?>
-
-<p><a href="<?php BASE_URL;?>usuario/nuevo">Agregar usuario</a></p>
+<div>
+<a class="btn btn-aviso" href="<?php BASE_URL;?>usuario/nuevo">Agregar usuario</a>
+<a class="btn btn-exito btn-lg" href="<?php BASE_URL;?>usuario/crear">Crear usuario AUTO</a>
+</div>
 <hr/>
 <pre>
 <?php print_r($this->usuarios);?>

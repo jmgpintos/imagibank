@@ -163,4 +163,21 @@ if (!function_exists('loadFile')) {
 
 }
 
+if (!function_exists('getArrayElement')) {
+
+    function getArrayElement($array, $element)
+    {
+        if(isset($array[$element]) && count($array[$element])){
+            return $array[$element];
+        }
+        else{
+            return null;
+        }
+    }
+
+}
+
+
+
+
 printFileName(__FILE__);

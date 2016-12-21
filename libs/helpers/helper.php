@@ -114,13 +114,26 @@ if (!function_exists('printFileName')) {
 
 if (!function_exists('printFunctionName')) {
 
-    function printFunctionName($functionName, $fileName = '')
+    function printFunctionName($functionName, $fileName = '', $params = false)
     {
+        $args = '';
+        if ($params) {
+            $args = ' with arguments:';
+            if (is_array($params)) {
+                foreach ($params as $key => $value) {
+                    $args .='[' . $key . ']: ' . $value . ', ';
+                }
+                $args = rtrim($args, ', ');
+            }
+            else {
+                $args .= $params;
+            }
+        }
         if ($fileName) {
-            put($functionName . ' on ' . $fileName, 'function called');
+            put($functionName . ' on ' . $fileName . $args, 'function called');
         }
         else {
-            put($functionName, 'function called');
+            put($functionName . $args, 'function called');
         }
     }
 
@@ -167,10 +180,10 @@ if (!function_exists('getArrayElement')) {
 
     function getArrayElement($array, $element)
     {
-        if(isset($array[$element]) && count($array[$element])){
+        if (isset($array[$element]) && count($array[$element])) {
             return $array[$element];
         }
-        else{
+        else {
             return null;
         }
     }

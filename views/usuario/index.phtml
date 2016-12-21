@@ -1,26 +1,28 @@
 <h2>Usuarios</h2>
 
-<?php if(isset($this->usuarios) && count($this->usuarios)):?>
-<table>
-    <?php for($i=0;$i<count($this->usuarios);$i++):?>
-    <tr>
-        <td><?php echo $this->usuarios[$i]['id'];?></td>
-        <td><?php echo $this->usuarios[$i]['username'];?></td>
-        <td><?php echo $this->usuarios[$i]['password'];?></td>
-        <td><a href="<?php echo BASE_URL . 'usuario/editar/' . $this->usuarios[$i]['id'];?>">Editar</a></td>
-        <td><a href="<?php echo BASE_URL . 'usuario/eliminar/' . $this->usuarios[$i]['id'];?>">Eliminar</a></td>
-    </tr>
-    <?php endfor;?>
-</table>
-<h3>Total usuarios: <?php echo count($this->usuarios);?></h3>
+<?php if (isset($this->usuarios) && count($this->usuarios)): ?>
+    <table>
+        <?php for ($i = 0; $i < count($this->usuarios); $i++): ?>
+            <tr>
+                <td><?php echo $this->usuarios[$i]['id']; ?></td>
+                <td><?php echo $this->usuarios[$i]['username']; ?></td>
+                <td><?php echo $this->usuarios[$i]['password']; ?></td>
+                <td><a href="<?php echo BASE_URL . 'usuario/editar/' . $this->usuarios[$i]['id']; ?>">Editar</a></td>
+                <td><a href="<?php echo BASE_URL . 'usuario/eliminar/' . $this->usuarios[$i]['id']; ?>">Eliminar</a></td>
+            </tr>
+        <?php endfor; ?>
+    </table>
+    <h3>Total usuarios: <?php echo count($this->usuarios); ?></h3>
 <?php else: ?>
-<p><strong>No hay usuarios</strong></p>
+    <p><strong>No hay usuarios</strong></p>
 <?php endif; ?>
 <div>
-<a class="btn btn-aviso" href="<?php BASE_URL;?>usuario/nuevo">Agregar usuario</a>
-<a class="btn btn-exito btn-lg" href="<?php BASE_URL;?>usuario/crear">Crear usuario AUTO</a>
+    <?php if(Session::accesoView('especial')): ?>
+    <a class="btn btn-aviso" href="<?php BASE_URL; ?>usuario/nuevo">Agregar usuario</a>
+    <?php endif; ?>
+    <a class="btn btn-exito btn-lg" href="<?php BASE_URL; ?>usuario/crear">Crear usuario AUTO</a>
 </div>
 <hr/>
 <pre>
-<?php print_r($this->usuarios);?>
+    <?php print_r($this->usuarios); ?>
 </pre>

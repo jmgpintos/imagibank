@@ -22,6 +22,9 @@ require_once APP_PATH . 'Model.php';
 require_once APP_PATH . 'View.php';
 require_once APP_PATH . 'Registro.php';
 require_once APP_PATH . 'Database.php';
+require_once APP_PATH . 'Session.php';
+
+Session::init();
 
 //vardump(get_required_files());
 if(isset($_GET['url']))

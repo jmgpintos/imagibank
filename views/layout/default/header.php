@@ -18,7 +18,9 @@
         <div id="main">
             <div id="header">
                 <div id="logo">
+                    <div class="padding-lg bg-info bb">
                     <h1><?php echo APP_NAME; ?></h1>
+                    </div>
                 </div>
             </div>
 

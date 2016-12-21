@@ -26,6 +26,7 @@ class usuarioController extends Controller
     public function nuevo()
     {
         printFunctionName(__METHOD__, __FILE__);
+        Session::acceso('especial');
 
         $this->_view->titulo = 'Nuevo usuario';
         $this->_view->setJs(array('nuevo'));

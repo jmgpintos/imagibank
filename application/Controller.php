@@ -111,7 +111,7 @@ abstract class Controller
      */
     protected function redireccionar($ruta = false)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__FUNCTION__, __FILE__, $ruta);
 
         if ($ruta) {
             header('location:' . BASE_URL . $ruta);

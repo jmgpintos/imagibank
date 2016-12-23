@@ -4,6 +4,7 @@
     <table>
         <?php for ($i = 0; $i < count($this->usuarios); $i++): ?>
             <tr>
+                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $this->usuarios[$i]['id']; ?></td>
                 <td><?php echo $this->usuarios[$i]['username']; ?></td>
                 <td><?php echo $this->usuarios[$i]['password']; ?></td>
@@ -17,8 +18,8 @@
     <p><strong>No hay usuarios</strong></p>
 <?php endif; ?>
 <div>
-    <?php if(Session::accesoView('especial')): ?>
-    <a class="btn btn-aviso" href="<?php BASE_URL; ?>usuario/nuevo">Agregar usuario</a>
+    <?php if (Session::accesoViewEstricto(array('usuario'))): ?>
+        <a class="btn btn-aviso" href="<?php BASE_URL; ?>usuario/nuevo">Agregar usuario</a>
     <?php endif; ?>
     <a class="btn btn-exito btn-lg" href="<?php BASE_URL; ?>usuario/crear">Crear usuario AUTO</a>
 </div>

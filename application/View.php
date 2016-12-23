@@ -35,6 +35,21 @@ class View
             )
         );
 
+        if (Session::get('autenticado')) {
+            $menu[] = array(
+                    'id' => 'login',
+                    'titulo' => 'Cerrar Sesión',
+                    'enlace' => BASE_URL . 'login/cerrar'
+            );
+        }
+        else {
+            $menu[] = array(
+                    'id' => 'login',
+                    'titulo' => 'Iniciar Sesión',
+                    'enlace' => BASE_URL . 'login'
+            );
+        }
+
         $js = array();
 
         if (count($this->_js)) {
@@ -63,7 +78,7 @@ class View
 
     public function setJs(array $js)
     {
-        if(is_array($js) && count($js)) {
+        if (is_array($js) && count($js)) {
             for ($i = 0; $i < count($js); $i++) {
                 $this->_js[$i] = BASE_URL . 'views/' . $this->_controlador . '/js/' . $js[$i] . '.js';
             }

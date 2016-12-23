@@ -14,7 +14,7 @@ class usuarioModel extends Model
     {
         printFunctionName(__METHOD__, __FILE__);
 
-        $usuarios = $this->_db->query("SELECT * FROM usuario");
+        $usuarios = $this->_db->query("SELECT * FROM usuarios");
 
         return $usuarios->fetchAll();
     }
@@ -25,7 +25,7 @@ class usuarioModel extends Model
 
         $id = (int) $id;
 
-        $usuarios = $this->_db->query("SELECT * FROM usuario WHERE id=$id");
+        $usuarios = $this->_db->query("SELECT * FROM usuarios WHERE id=$id");
 
         return $usuarios->fetch();
     }
@@ -36,7 +36,7 @@ class usuarioModel extends Model
 
         $id = (int) $id;
 
-        $this->_db->prepare("UPDATE usuario SET username = :username, password = :password WHERE id = :id")
+        $this->_db->prepare("UPDATE usuarios SET username = :username, password = :password WHERE id = :id")
                 ->execute(
                         array(
                             ':id' => $id,
@@ -49,7 +49,7 @@ class usuarioModel extends Model
     {
         printFunctionName(__METHOD__, __FILE__);
 
-        $this->_db->prepare("INSERT INTO usuario VALUES(null, :username, :password)")
+        $this->_db->prepare("INSERT INTO usuarios VALUES(null, :username, :password)")
                 ->execute(
                         array(
                             ':username' => $username,
@@ -63,7 +63,7 @@ class usuarioModel extends Model
 
         $id = (int) $id;
 
-        $this->_db->query("DELETE FROM usuario WHERE id = $id");
+        $this->_db->query("DELETE FROM usuarios WHERE id = $id");
     }
 
     //FUNCIONES PARA DEV
@@ -106,9 +106,9 @@ class usuarioModel extends Model
             'max_long' => 20
         );
         $password = createPassword($options);
-        $SQL = "INSERT INTO usuario VALUES(null, :username, :password)";
+        $SQL = "INSERT INTO usuarios VALUES(null, :username, :password)";
         
-        $this->_db->prepare("INSERT INTO usuario VALUES(null, :username, :password)")
+        $this->_db->prepare("INSERT INTO usuarios VALUES(null, :username, :password)")
                 ->execute(
                         array(
                             ':username' => $username,

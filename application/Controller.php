@@ -71,7 +71,29 @@ abstract class Controller
 
         return 0;
     }
-    
+
+    protected function getSql($clave)
+    {
+        if (isset($_POST[$clave]) && !empty($_POST[$clave])) {
+            $_POST[$clave] = strip_tags($_POST[$clave]);
+
+            if (!get_magic_quotes_gpc()) {
+                $_POST[$clave] = mysql_escape_string($_POST[$clave]);
+            }
+
+            return trim($_POST[$clave]);
+        }
+    }
+
+    protected function getAlphaNum($clave)
+    {
+
+        if (isset($_POST[$clave]) && !empty($_POST[$clave])) {
+            $_POST[$clave] = (string) preg_replace('/[^A-Z0-9_]/i', '', $_POST[$clave]);
+            return trim($_POST[$clave]);
+        }
+    }
+
     /**
      * Devuelve el valor de la clave $_POST sin filtrar, para ser utilizada en un db->prepare()
      * @param String $clave
@@ -79,7 +101,7 @@ abstract class Controller
      */
     protected function getPostParam($clave)
     {
-        
+
         if (isset($_POST[$clave])) {
             return $_POST[$clave];
         }

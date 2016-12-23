@@ -86,34 +86,42 @@ class usuarioModel extends Model
         );
         $nombre = $nombres[rand(0, count($nombres))];
         $apellido = $apellidos[rand(0, count($apellidos))];
-/*
+        $nombreCompleto = $nombre . ' ' . $apellido;
         $rand = rand(0, 99999999);
         $id_rol = rand(1, 3);
-        $mail = limpiar(strtolower($nombre)) . $rand . "@" . limpiar(strtolower($apellido)) . '.com';
-        $tel = rand(600000000, 799999999);
+        $mail = limpiarCadena(strtolower($nombre)) . $rand . "@" . limpiarCadena(strtolower($apellido)) . '.com';
+        /*
+          $tel = rand(600000000, 799999999);
 
-        $codigo = rand(11111111, 99999999);
-        $SQL = "INSERT INTO usuario(id_rol, nombre, apellidos, username, password, email, telefono, estado, fecha_creacion,codigo)"
-        . "VALUES($id_rol, '$nombre', '$apellido','user" . $rand . "','" . Hash::getHash('sha1',
-                        '1234', HASH_KEY) . "',' $mail ','" . $tel . "',1,now(),$codigo)";
-//        $this->_db->query($SQL);
-  */      
-        
-        
-        $username = substr($nombre,0,3) . "_" . substr($apellido, 0, 5);
+          $codigo = rand(11111111, 99999999);
+          $SQL = "INSERT INTO usuario(id_rol, nombre, apellidos, username, password, email, telefono, estado, fecha_creacion,codigo)"
+          . "VALUES($id_rol, '$nombre', '$apellido','user" . $rand . "','" . Hash::getHash('sha1',
+          '1234', HASH_KEY) . "',' $mail ','" . $tel . "',1,now(),$codigo)";
+          //        $this->_db->query($SQL);
+         */
+
+
+        $username = substr($nombre, 0, 3) . "_" . substr($apellido, 0, 5);
         $options = array(
             'min_long' => 10,
             'max_long' => 20
         );
-        $password = createPassword($options);
-        $SQL = "INSERT INTO usuarios VALUES(null, :username, :password)";
-        
-        $this->_db->prepare("INSERT INTO usuarios VALUES(null, :username, :password)")
-                ->execute(
-                        array(
-                            ':username' => $username,
-                            ':password' => $password
-        ));
+        $password = md5(createPassword($options));
+        $SQL = "INSERT INTO usuarios VALUES(null, :nombre, :username, :password, :mail, 'usuario', 1)";
+        put($SQL);
+        put($nombreCompleto, 'nombre');
+        put($username, 'username');
+        put($password, 'password');
+        put($mail, 'mail');
+        $data = array(
+            ':nombre' => $nombreCompleto,
+            ':username' => $username,
+            ':password' => $password,
+            ':mail' => $mail
+        );
+        vardump($data);
+        $this->_db->prepare($SQL)
+                ->execute($data);
     }
 
 }

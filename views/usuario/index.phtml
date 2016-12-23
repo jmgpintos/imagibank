@@ -7,7 +7,7 @@
                 <td><?php echo $i + 1; ?></td>
                 <td><?php echo $this->usuarios[$i]['id']; ?></td>
                 <td><?php echo $this->usuarios[$i]['username']; ?></td>
-                <td><?php echo $this->usuarios[$i]['password']; ?></td>
+                <td><?php echo $this->usuarios[$i]['email']; ?></td>
                 <td><a href="<?php echo BASE_URL . 'usuario/editar/' . $this->usuarios[$i]['id']; ?>">Editar</a></td>
                 <td><a href="<?php echo BASE_URL . 'usuario/eliminar/' . $this->usuarios[$i]['id']; ?>">Eliminar</a></td>
             </tr>

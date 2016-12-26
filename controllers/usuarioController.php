@@ -13,12 +13,21 @@ class usuarioController extends Controller
         $this->_usuario = $this->loadModel('usuario');
     }
 
-    public function index()
+    public function index($pagina = false)
     {
-        printFunctionName(__METHOD__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__, array('pagina' => $pagina));
 
+        if (!$this->filtrarInt($pagina)) {
+            $pagina = false;
+        }
+        else {
+            $pagina = (int) $pagina;
+        }
 
-        $this->_view->usuarios = $this->_usuario->getUsuarios();
+        $this->getLibrary('paginador');
+        $paginador = new Paginador();
+        $this->_view->usuarios = $paginador->paginar($this->_usuario->getUsuarios(), $pagina);
+        $this->_view->paginacion = $paginador->getView('paginacion', 'usuario/index');
         $this->_view->titulo = 'Usuarios';
         $this->_view->renderizar('index', 'usuario');
     }
@@ -113,11 +122,26 @@ class usuarioController extends Controller
     }
 
     //METODOS PARA DEV
+    /**
+     * Crear nuevo usuario automáticamente
+     */
     public function crear()
     {
         printFunctionName(__METHOD__, __FILE__);
 
         $this->_usuario->nuevoUsuarioAuto();
+
+        $this->redireccionar('usuario');
+    }
+
+    /**
+     * Cambiar código de RAND a UNIQID
+     */
+    public function editarCodigo()
+    {
+        printFunctionName(__METHOD__, __FILE__);
+
+        $this->_usuario->editarCodigo();
 
         $this->redireccionar('usuario');
     }

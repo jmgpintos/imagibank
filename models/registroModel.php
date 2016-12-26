@@ -57,9 +57,9 @@ class registroModel extends Model
             ':email' => $email
         );
 
-        printFunctionName(__FUNCTION__, __FILE__, $args);
+        printFunctionName(__METHOD__, __FILE__, $args);
 
-        $random = rand(1000000000, 9999999999);
+        $random = uniqid();
         put($random, 'random');
 
         $SQL = "INSERT INTO usuarios VALUES(null, :nombre, :username, :password, :mail, 'usuario', 0, now(), :codigo)";

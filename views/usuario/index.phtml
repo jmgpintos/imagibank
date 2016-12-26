@@ -4,7 +4,6 @@
     <table>
         <?php for ($i = 0; $i < count($this->usuarios); $i++): ?>
             <tr>
-                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $this->usuarios[$i]['id']; ?></td>
                 <td><?php echo $this->usuarios[$i]['username']; ?></td>
                 <td><?php echo $this->usuarios[$i]['email']; ?></td>
@@ -18,12 +17,16 @@
     <p><strong>No hay usuarios</strong></p>
 <?php endif; ?>
 <div>
-    <?php if (Session::accesoViewEstricto(array('usuario'))): ?>
+    <?php if (Session::accesoViewEstricto(array('admin'))): ?>
         <a class="btn btn-aviso" href="<?php BASE_URL; ?>usuario/nuevo">Agregar usuario</a>
     <?php endif; ?>
-    <a class="btn btn-exito btn-lg" href="<?php BASE_URL; ?>usuario/crear">Crear usuario AUTO</a>
+    <a class="btn btn-exito" href="<?php BASE_URL; ?>usuario/crear">Crear usuario AUTO</a>
+    <a class="btn btn-exito" href="<?php BASE_URL; ?>usuario/editarCodigo">Editar código usuario</a>
 </div>
-<hr/>
+
+<?php if(isset($this->paginacion)) echo $this->paginacion ;?>
+
 <pre>
-    <?php print_r($this->usuarios); ?>
+
+    <?php //print_r($this->usuarios); ?>
 </pre>

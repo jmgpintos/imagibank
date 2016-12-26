@@ -19,7 +19,7 @@ class Session
      */
     public static function destroy($clave = false)
     {
-        printFunctionName(__FUNCTION__, __FILE__, $clave);
+        printFunctionName(__METHOD__, __FILE__, $clave);
         if ($clave) {
             if (is_array($clave)) {
                 for ($i = 0; $i < count($clave); $i++) {
@@ -45,7 +45,7 @@ class Session
      */
     public static function set($clave, $valor)
     {
-        printFunctionName(__FUNCTION__, __FILE__, array('clave' => $clave, 'valor' => $valor));
+        printFunctionName(__METHOD__, __FILE__, array('clave' => $clave, 'valor' => $valor));
         if (!empty($clave))
             $_SESSION[$clave] = $valor;
     }
@@ -81,7 +81,7 @@ class Session
      */
     public static function getLevel($level)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         $role = array(
             'admin' => 3,
             'especial' => 2,
@@ -103,7 +103,7 @@ class Session
      */
     public static function acceso($level)
     {
-        printFunctionName(__FUNCTION__, __FILE__, $level);
+        printFunctionName(__METHOD__, __FILE__, $level);
         if (!Session::get('autenticado')) {
             header('location:' . BASE_URL . 'error/access/5050');
             exit;
@@ -123,7 +123,7 @@ class Session
      */
     public static function accesoView($level)
     {
-        printFunctionName(__FUNCTION__, __FILE__, $level);
+        printFunctionName(__METHOD__, __FILE__, $level);
         if (!Session::get('autenticado')) {
             return false;
         }

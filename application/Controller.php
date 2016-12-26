@@ -31,7 +31,7 @@ abstract class Controller
 
     protected function getLibrary($libreria)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
 
         $rutaLibreria = ROOT . 'libs' . DS . $libreria . '.php';
 
@@ -45,7 +45,7 @@ abstract class Controller
      */
     protected function getTexto($clave)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
 
         if (isset($_POST[$clave]) && !empty($_POST[$clave])) {
             $_POST[$clave] = htmlspecialchars($_POST[$clave], ENT_QUOTES);
@@ -62,7 +62,7 @@ abstract class Controller
      */
     protected function getInt($clave)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
 
         if (isset($_POST[$clave]) && !empty($_POST[$clave])) {
             $_POST[$clave] = filter_input(INPUT_POST, $clave, FILTER_VALIDATE_INT);
@@ -115,7 +115,7 @@ abstract class Controller
      */
     protected function filtrarInt($int)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
 
         $int = (int) $int;
 
@@ -133,7 +133,7 @@ abstract class Controller
      */
     protected function redireccionar($ruta = false)
     {
-        printFunctionName(__FUNCTION__, __FILE__, $ruta);
+        printFunctionName(__METHOD__, __FILE__, $ruta);
 
         if ($ruta) {
             header('location:' . BASE_URL . $ruta);

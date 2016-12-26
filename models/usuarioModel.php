@@ -107,21 +107,39 @@ class usuarioModel extends Model
             'max_long' => 20
         );
         $password = md5(createPassword($options));
-        $SQL = "INSERT INTO usuarios VALUES(null, :nombre, :username, :password, :mail, 'usuario', 1, now())";
+        $random = uniqid();
+        $SQL = "INSERT INTO usuarios VALUES(null, :nombre, :username, :password, :mail, 'usuario', 1, now(), :codigo)";
         put($SQL);
         put($nombreCompleto, 'nombre');
         put($username, 'username');
         put($password, 'password');
         put($mail, 'mail');
+        put($random, 'random');
         $data = array(
             ':nombre' => $nombreCompleto,
             ':username' => $username,
             ':password' => $password,
-            ':mail' => $mail
+            ':mail' => $mail,
+            ':codigo' => $random
         );
         vardump($data);
         $this->_db->prepare($SQL)
                 ->execute($data);
+    }
+
+    /**
+     * Cambiar código de RAND a UNIQID
+     */
+    public function editarCodigo()
+    {
+        printFunctionName(__METHOD__, __FILE__);
+        $rows = $this->_db->query('SELECT * FROM usuarios');
+
+        foreach ($rows as $row) {
+            put('Editando registro con id ' . $row['id']);
+            $sql = "UPDATE usuarios SET codigo = '" . uniqid() . "' WHERE id = " . $row['id'];
+            $rows = $this->_db->query($sql);
+        }
     }
 
 }

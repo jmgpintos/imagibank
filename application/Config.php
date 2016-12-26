@@ -17,3 +17,5 @@ define('DB_USER', 'root');
 define('DB_PASS', 'plas');
 define('DB_NAME', 'imagibank');
 define('DB_CHAR', 'utf8');
+
+define('REGISTROS_POR_PAGINA', 5);

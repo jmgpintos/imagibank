@@ -13,7 +13,7 @@ class registroController extends Controller
 
     public function index()
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         if (Session::get('autenticado')) {
             //Si el usuario está logueado no puede entrar al registro de usuarios
             $this->redireccionar();
@@ -105,7 +105,7 @@ class registroController extends Controller
 
     public function activar($id, $codigo)
     {
-        printFunctionName(__FUNCTION__, __FILE__);
+        printFunctionName(__METHOD__, __FILE__);
         if (!$this->filtrarInt($id) || !$this->filtrarInt($codigo)) {
             $this->_view->_error = 'Esta cuenta no existe';
             $this->_view->renderizar('activar', 'registro');

@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>normalize.css">
         <link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>estilos.css">
         <link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>helpers.css">
+        <link rel="stylesheet" href="<?php echo $_layoutParams['ruta_css'] ?>paginacion.css">
         <script src="<?php echo BASE_URL; ?>public/js/jquery.js" type="text/javascript"></script>
         <script src="<?php echo BASE_URL; ?>public/js/jquery.validate.js" type="text/javascript"></script>        
         <?php if (isset($_layoutParams['js']) && count($_layoutParams['js'])): ?>

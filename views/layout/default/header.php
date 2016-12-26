@@ -50,3 +50,11 @@
                     }
                     ?>
                 </div>
+                </noscript>
+                <div id="mensaje">
+                    <?php
+                    if (isset($this->_mensaje)) {
+                        echo $this->_mensaje;
+                    }
+                    ?>
+                </div>

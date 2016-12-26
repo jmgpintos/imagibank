@@ -107,7 +107,7 @@ class usuarioModel extends Model
             'max_long' => 20
         );
         $password = md5(createPassword($options));
-        $SQL = "INSERT INTO usuarios VALUES(null, :nombre, :username, :password, :mail, 'usuario', 1)";
+        $SQL = "INSERT INTO usuarios VALUES(null, :nombre, :username, :password, :mail, 'usuario', 1, now())";
         put($SQL);
         put($nombreCompleto, 'nombre');
         put($username, 'username');

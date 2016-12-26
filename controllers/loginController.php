@@ -13,6 +13,9 @@ class loginController extends Controller
 
     public function index()
     {
+        if(Session::get('autenticado')) {
+            $this->redireccionar();
+        }
         $this->_view->titulo = 'Iniciar sesión';
 
         if ($this->getInt('enviar') == 1) {

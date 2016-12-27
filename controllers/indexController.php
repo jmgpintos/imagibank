@@ -14,8 +14,8 @@ class indexController extends Controller
     {
         printFunctionName(__METHOD__, __FILE__);
         
-        $this->_view->titulo = 'Portada';
-        $this->_view->renderizar('index');
+        $this->_view->assign('titulo', 'Portada');
+        $this->_view->renderizar('index', 'inicio');
     }
 
 }
